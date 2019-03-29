@@ -1,0 +1,38 @@
+D:\Personal\Desktop\QLH\program\projects\Seri\Seri\bin\Debug\Seri.exe.config
+D:\Personal\Desktop\QLH\program\projects\Seri\Seri\bin\Debug\Seri.exe
+D:\Personal\Desktop\QLH\program\projects\Seri\Seri\bin\Debug\Seri.pdb
+D:\Personal\Desktop\QLH\program\projects\Seri\Seri\obj\Debug\Seri.csprojResolveAssemblyReference.cache
+D:\Personal\Desktop\QLH\program\projects\Seri\Seri\obj\Debug\Seri.Properties.Resources.resources
+D:\Personal\Desktop\QLH\program\projects\Seri\Seri\obj\Debug\Seri.csproj.GenerateResource.Cache
+D:\Personal\Desktop\QLH\program\projects\Seri\Seri\obj\Debug\Seri.exe
+D:\Personal\Desktop\QLH\program\projects\Seri\Seri\obj\Debug\Seri.pdb
+D:\Personal\Desktop\QLH\program\projects\Seri\Seri\obj\Debug\Seri.From1.resources
+C:\Users\MSI\Desktop\Seri (1)\Seri\Seri\bin\Debug\Seri.exe.config
+C:\Users\MSI\Desktop\Seri (1)\Seri\Seri\bin\Debug\Seri.exe
+C:\Users\MSI\Desktop\Seri (1)\Seri\Seri\bin\Debug\Seri.pdb
+C:\Users\MSI\Desktop\Seri (1)\Seri\Seri\obj\Debug\Seri.csprojAssemblyReference.cache
+C:\Users\MSI\Desktop\Seri (1)\Seri\Seri\obj\Debug\Seri.From1.resources
+C:\Users\MSI\Desktop\Seri (1)\Seri\Seri\obj\Debug\Seri.Properties.Resources.resources
+C:\Users\MSI\Desktop\Seri (1)\Seri\Seri\obj\Debug\Seri.csproj.GenerateResource.cache
+C:\Users\MSI\Desktop\Seri (1)\Seri\Seri\obj\Debug\Seri.csproj.CoreCompileInputs.cache
+C:\Users\MSI\Desktop\Seri (1)\Seri\Seri\obj\Debug\Seri.exe
+C:\Users\MSI\Desktop\Seri (1)\Seri\Seri\obj\Debug\Seri.pdb
+D:\Personal\Desktop\QLH\program\projects\Seri (1)\Seri (1)\Seri\Seri\bin\Debug\Seri.exe.config
+D:\Personal\Desktop\QLH\program\projects\Seri (1)\Seri (1)\Seri\Seri\bin\Debug\Seri.exe
+D:\Personal\Desktop\QLH\program\projects\Seri (1)\Seri (1)\Seri\Seri\bin\Debug\Seri.pdb
+D:\Personal\Desktop\QLH\program\projects\Seri (1)\Seri (1)\Seri\Seri\obj\Debug\Seri.From1.resources
+D:\Personal\Desktop\QLH\program\projects\Seri (1)\Seri (1)\Seri\Seri\obj\Debug\Seri.Properties.Resources.resources
+D:\Personal\Desktop\QLH\program\projects\Seri (1)\Seri (1)\Seri\Seri\obj\Debug\Seri.csproj.GenerateResource.Cache
+D:\Personal\Desktop\QLH\program\projects\Seri (1)\Seri (1)\Seri\Seri\obj\Debug\Seri.exe
+D:\Personal\Desktop\QLH\program\projects\Seri (1)\Seri (1)\Seri\Seri\obj\Debug\Seri.pdb
+D:\Personal\Desktop\QLH\program\projects\Seri (1)\Seri (1)\Seri\Seri\obj\Debug\Seri.csprojResolveAssemblyReference.cache
+C:\Users\MSI\Desktop\Seri\Seri\bin\Debug\Seri.exe.config
+C:\Users\MSI\Desktop\Seri\Seri\bin\Debug\Seri.exe
+C:\Users\MSI\Desktop\Seri\Seri\bin\Debug\Seri.pdb
+C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.csprojAssemblyReference.cache
+C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.From1.resources
+C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.Properties.Resources.resources
+C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.csproj.GenerateResource.cache
+C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.csproj.CoreCompileInputs.cache
+C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.exe
+C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.pdb
