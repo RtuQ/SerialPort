@@ -36,3 +36,13 @@ C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.csproj.GenerateResource.cache
 C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.csproj.CoreCompileInputs.cache
 C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.exe
 C:\Users\MSI\Desktop\Seri\Seri\obj\Debug\Seri.pdb
+C:\Users\MSI\Desktop\项目\Seri\Seri\bin\Debug\Seri.exe.config
+C:\Users\MSI\Desktop\项目\Seri\Seri\bin\Debug\Seri.exe
+C:\Users\MSI\Desktop\项目\Seri\Seri\bin\Debug\Seri.pdb
+C:\Users\MSI\Desktop\项目\Seri\Seri\obj\Debug\Seri.csprojAssemblyReference.cache
+C:\Users\MSI\Desktop\项目\Seri\Seri\obj\Debug\Seri.From1.resources
+C:\Users\MSI\Desktop\项目\Seri\Seri\obj\Debug\Seri.Properties.Resources.resources
+C:\Users\MSI\Desktop\项目\Seri\Seri\obj\Debug\Seri.csproj.GenerateResource.cache
+C:\Users\MSI\Desktop\项目\Seri\Seri\obj\Debug\Seri.csproj.CoreCompileInputs.cache
+C:\Users\MSI\Desktop\项目\Seri\Seri\obj\Debug\Seri.exe
+C:\Users\MSI\Desktop\项目\Seri\Seri\obj\Debug\Seri.pdb

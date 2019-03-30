@@ -16,7 +16,7 @@ namespace Seri
     {
         string last_port;
         bool show_time = true;
-        bool byte_tostring = true;
+        bool show_hex = false;
         bool stop_show = false;
         bool send_hex = false;
         bool send_enter = false;
@@ -81,9 +81,9 @@ namespace Seri
         {
             char[] valus = buffer.ToArray();
             string buffer2 = "";
-            foreach(int letter in valus)
+            foreach(long letter in valus)
             {
-                int valu = Convert.ToInt16(letter);
+                long valu = Convert.ToInt64(letter);
                 buffer2 +=valu.ToString("X2");
                 buffer2 += " ";
             }
@@ -164,6 +164,7 @@ namespace Seri
 
         }
 
+        //串口扫描
         private void timer1_Tick(object sender, EventArgs e)
         {
             int i = 0;
@@ -237,42 +238,36 @@ namespace Seri
                 string time = DateTime.Now.TimeOfDay.ToString();
                 time = time.Substring(0, 11);
                 //等待数据进入缓冲区 不加延时可能发生数据分段现象
-                System.Threading.Thread.Sleep(200);
+                System.Threading.Thread.Sleep(50);
 
-                if (send_hex)
-                {
+                //用于解决不能显示和发送中文
+                /*
+                System.Text.ASCIIEncoding unic = new System.Text.ASCIIEncoding();
+                string buffer2 = serialPort1.ReadExisting();
+                Byte[] readBytes = System.Text.Encoding.Default.GetBytes(buffer2);
 
-                    //buffer = serialPort1.ReadExisting();
-                    int length = serialPort1.BytesToRead;
-                    byte[] buffer2 = new byte[length];
-                    for (int i = 0; i < length; i++)
-                    {
-                        buffer2[i] = (byte)serialPort1.ReadByte();
-                    }
+                // for (int i = 0; i < readBytes.Length; i++)
+                //{
+                //   readBytes[i] = (byte)serialPort1.ReadByte();
+                // }
+                buffer = unic.GetString(readBytes);
+                */
 
-                    buffer = byteToHexStr(buffer2);
-                }
+                ///*
+                int len = serialPort1.BytesToRead;
+                byte[] bytes = new byte[len];
+                serialPort1.Read(bytes, 0, len);
+                if (show_hex)
+                    buffer = byteToHexStr(bytes);
                 else
-                {
-                    //用于解决不能显示和发送中文
-                    System.Text.UTF8Encoding unic = new System.Text.UTF8Encoding();
-                    string buffer2 = serialPort1.ReadExisting();
-                    Byte[] readBytes = System.Text.Encoding.Default.GetBytes(buffer2);
-
-                   // for (int i = 0; i < readBytes.Length; i++)
-                    //{
-                     //   readBytes[i] = (byte)serialPort1.ReadByte();
-                   // }
-                    buffer = unic.GetString(readBytes);
-                }
+                    buffer = System.Text.Encoding.Default.GetString(bytes); 
+                    // */
+                
                 this.Invoke((EventHandler)(delegate
                 {
                     if (stop_show == false)
                     {
-                        if (byte_tostring)
                             Tostring(buffer, time);
-                        else
-                            ToHex(buffer, time);
                     }
                 }
                    )
@@ -286,8 +281,6 @@ namespace Seri
             }
             catch (Exception ex)
             {
-                //响铃并显示异常给用户
-//                System.Media.SystemSounds.Beep.Play();
                 MessageBox.Show(ex.Message);
 
             }
@@ -358,8 +351,7 @@ namespace Seri
                 //刷新COM口选项
                 comboBox2.Items.Clear();
                 comboBox2.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
-                //响铃并显示异常给用户
-//                System.Media.SystemSounds.Beep.Play();
+
                 button1.Text = "打开串口";
                 MessageBox.Show(ex.Message);
                 comboBox1.Enabled = true;
@@ -403,9 +395,11 @@ namespace Seri
                         }
                         else
                         {   //用于解决不能显示和发送中文
-                            System.Text.UnicodeEncoding unic = new System.Text.UnicodeEncoding();
-                            Byte[] writeBytes = unic.GetBytes(msg);
+                            /*System.Text.UTF8Encoding unic = new System.Text.UTF8Encoding();
+                            Byte[] writeBytes = unic.GetBytes(msg);*/
 
+                            Encoding gb = System.Text.Encoding.GetEncoding("gb2312");
+                            byte[] writeBytes = gb.GetBytes(msg);
                             serialPort1.Write(writeBytes, 0, writeBytes.Length);
                         }
 
@@ -509,9 +503,8 @@ namespace Seri
                         }
                         else
                         {   //用于解决不能显示和发送中文
-                            System.Text.UnicodeEncoding unic = new System.Text.UnicodeEncoding();
-                            Byte[] writeBytes = unic.GetBytes(msg);
-
+                            Encoding gb = System.Text.Encoding.GetEncoding("gb2312");
+                            byte[] writeBytes = gb.GetBytes(msg);
                             serialPort1.Write(writeBytes, 0, writeBytes.Length);
                         }
 
@@ -603,11 +596,11 @@ namespace Seri
 
             if (checkBox2.CheckState == CheckState.Checked)
             {
-                byte_tostring = false;
+                show_hex = true;
             }
             else if (checkBox2.CheckState == CheckState.Unchecked)
             {
-                byte_tostring = true;
+                show_hex = false;
             }
         }
 
