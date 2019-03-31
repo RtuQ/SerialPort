@@ -21,6 +21,7 @@ namespace Seri
         bool send_hex = false;
         bool send_enter = false;
         bool auto_sand = false;
+        bool auto_clear = false;
         long rec_num = 0;
         long send_num = 0;
         List<string> mlist = new List<string>();
@@ -42,14 +43,16 @@ namespace Seri
             timer1.Start();
             textBox_rec.WordWrap = true;
             // Create the ToolTip and associate with the Form container.
-            ToolTip toolTip1 = new ToolTip();
+            ToolTip toolTip1 = new ToolTip
+            {
 
-            // Set up the delays for the ToolTip.
-            toolTip1.AutoPopDelay = 5000;
-            toolTip1.InitialDelay = 1000;
-            toolTip1.ReshowDelay = 500;
-            // Force the ToolTip text to be displayed whether or not the form is active.
-            toolTip1.ShowAlways = true;
+                // Set up the delays for the ToolTip.
+                AutoPopDelay = 5000,
+                InitialDelay = 1000,
+                ReshowDelay = 500,
+                // Force the ToolTip text to be displayed whether or not the form is active.
+                ShowAlways = true
+            };
 
             // Set up the ToolTip text for the Button and Checkbox.
             toolTip1.SetToolTip(textBox_rec, "接收数据显示");
@@ -58,6 +61,7 @@ namespace Seri
         }
 
 
+        //启动执行
         private void Form1_Load(object sender, EventArgs e)
         {
             RegistryKey keyCom = Registry.LocalMachine.OpenSubKey("Hardware\\DeviceMap\\SerialComm");
@@ -72,6 +76,21 @@ namespace Seri
                 }
                 if (comboBox2.Items.Count > 0)
                     comboBox2.SelectedIndex = 0;
+            }
+        }
+
+        //自动清理
+
+        public  void Auto_clear()
+        {
+            if (auto_clear)
+            {
+                int length = 0;
+                length = textBox_rec.Lines.GetUpperBound(0);
+                if (length > 24)
+                {
+                    textBox_rec.Text = "";
+                }
             }
         }
 
@@ -108,15 +127,19 @@ namespace Seri
        //文本显示
         public void Tostring(string buffer, string time)
         {
-             if (show_time)
+            Auto_clear();
+            if (show_time)
             {
                 textBox_rec.AppendText("[");
                 textBox_rec.AppendText(time);
                 textBox_rec.AppendText("]");
-                textBox_rec.AppendText("←收◆ ");
+                textBox_rec.AppendText("←收◆ "+buffer+"\r\n");
             }
-            textBox_rec.AppendText(buffer);
-            textBox_rec.AppendText("\r\n"); 
+            else
+                textBox_rec.AppendText(buffer);
+
+            
+
         }
 
         //十六进制发送
@@ -352,7 +375,9 @@ namespace Seri
                 comboBox2.Items.Clear();
                 comboBox2.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
 
+                button1.ForeColor = Color.Black;
                 button1.Text = "打开串口";
+                button1.BackColor = Color.White;
                 MessageBox.Show(ex.Message);
                 comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
@@ -464,11 +489,13 @@ namespace Seri
         {
             if (checkBox3.CheckState == CheckState.Checked)
             {
+                auto_sand = true;
                 timer2.Interval = Convert.ToInt32(textBox1.Text);
                 timer2.Start();
             }
             else if(checkBox3.CheckState  == CheckState.Unchecked)
             {
+                auto_sand = false;
                 timer2.Stop();
             }
         }
@@ -556,41 +583,33 @@ namespace Seri
             }
         }
 
+        //自动发送选择
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
             if (checkBox1.CheckState == CheckState.Checked)
             {
-                auto_sand = true;
-                timer3.Start();
+                auto_clear = true;
             }
             else if (checkBox1.CheckState == CheckState.Unchecked)
             {
-                auto_sand = false;
-                timer3.Stop();
+                auto_clear = false;
             }
         }
 
+        //清空接收框
         private void button4_Click(object sender, EventArgs e)
         {
             textBox_rec.Text = "";
         }
 
-        private void timer3_hand(object sender, EventArgs e)
-        {
-            int length = 0;
-            length = textBox_rec.Lines.GetUpperBound(0);
-            if (length > 23)
-            {
-                textBox_rec.Text = "";
-            }
-        }
-
+        //清空send
         private void button7_Click(object sender, EventArgs e)
         {
             textBox_send.Text = "";
         }
-
+        
+        //显示格式
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -604,6 +623,7 @@ namespace Seri
             }
         }
 
+        //显示开关
         private void button5_Click(object sender, EventArgs e)
         {
             stop_show = !stop_show;
@@ -628,6 +648,7 @@ namespace Seri
             send_num = 0;
         }
 
+        //保存文件
         private void button6_Click(object sender, EventArgs e)
         {
             StreamWriter myStream;
@@ -648,6 +669,7 @@ namespace Seri
             
         }
 
+        //打开文件
         private void button8_Click(object sender, EventArgs e)
         {
 
@@ -679,6 +701,8 @@ namespace Seri
             
         }
 
+
+        //发送hex 选择
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox4.CheckState == CheckState.Checked)
