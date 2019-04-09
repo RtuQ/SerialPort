@@ -22,9 +22,11 @@ namespace Seri
         bool send_enter = false;
         bool auto_sand = false;
         bool auto_clear = false;
+        //bool error = false;
         long rec_num = 0;
         long send_num = 0;
-        List<string> mlist = new List<string>();
+
+        public static From1 fm1 = null;
         public From1()
         {
             InitializeComponent();
@@ -42,21 +44,24 @@ namespace Seri
 
             timer1.Start();
             textBox_rec.WordWrap = true;
-            // Create the ToolTip and associate with the Form container.
+            // 创建一个 the ToolTip .
             ToolTip toolTip1 = new ToolTip
             {
 
-                // Set up the delays for the ToolTip.
+                // 设置延时.
                 AutoPopDelay = 5000,
                 InitialDelay = 1000,
                 ReshowDelay = 500,
-                // Force the ToolTip text to be displayed whether or not the form is active.
+                // 开启？
                 ShowAlways = true
             };
 
-            // Set up the ToolTip text for the Button and Checkbox.
+            // 设置需要显示的数据
             toolTip1.SetToolTip(textBox_rec, "接收数据显示");
             toolTip1.SetToolTip(textBox_send, "发送数据显示");
+
+            //用于form2 函数调用
+            fm1 = this;
 
         }
 
@@ -145,7 +150,11 @@ namespace Seri
         //十六进制发送
         public static byte[] HexStringToBytes(string hs)
         {
-            byte[] a = new byte[1];
+            byte[] a = {0x00};
+
+            //非静态变量处理方法
+            /*From1 tc = new From1();
+            tc.error = true;            */
             try
             {
                 //byte[] mid = Encoding.Default.GetBytes(hs);
@@ -158,9 +167,11 @@ namespace Seri
                 }
                 return b;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+
                 MessageBox.Show("输入正确的十六进制数");
+
                 return a;
             }
 
@@ -179,6 +190,85 @@ namespace Seri
                 }
             }
             return returnStr;
+        }
+
+        public void sand_data(string data,bool ishex)
+        {
+            long num = 0;
+            string msg = "";
+            try
+            {
+                //首先判断串口是否开启
+                if (serialPort1.IsOpen)
+                {
+                    if (auto_sand == false)
+                    {
+                        //判断是否发送回车换行
+                        if (send_enter)
+                        {
+                            if (ishex)
+                                msg = data + " 0D 0A";
+                            else
+                                msg = data + "\r\n";
+                        }
+                        else
+                            msg = data;
+                        if (ishex)
+                        {
+                            Byte[] hex = HexStringToBytes(msg);
+                            serialPort1.Write(hex, 0, hex.Length);
+                        }
+                        else
+                        {   //用于解决不能显示和发送中文
+                            /*System.Text.UTF8Encoding unic = new System.Text.UTF8Encoding();
+                            Byte[] writeBytes = unic.GetBytes(msg);*/
+
+                            Encoding gb = System.Text.Encoding.GetEncoding("gb2312");
+                            byte[] writeBytes = gb.GetBytes(msg);
+                            serialPort1.Write(writeBytes, 0, writeBytes.Length);
+                        }
+
+                        if (show_time ^ stop_show)
+                        {
+                            string time = DateTime.Now.TimeOfDay.ToString();
+                            time = time.Substring(0, 11);
+                            this.Invoke((EventHandler)(delegate
+                            {
+                                textBox_rec.AppendText("[");
+                                textBox_rec.AppendText(time);
+                                textBox_rec.AppendText("]");
+                                textBox_rec.AppendText("→发◇ " + msg);
+                                textBox_rec.AppendText("\r\n");
+                            }
+                               )
+                            );
+                        }
+
+                        // 计算发送的数据长度
+                        num = System.Text.Encoding.Default.GetBytes(textBox_send.Text).Length;
+                        send_num += num;
+                        label12.Text = send_num.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                //捕获到异常，创建一个新的对象，之前的不可以再用
+                serialPort1 = new System.IO.Ports.SerialPort();
+                //刷新COM口选项
+                comboBox2.Items.Clear();
+                comboBox2.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
+                //响铃并显示异常给用户
+                System.Media.SystemSounds.Beep.Play();
+                button1.Text = "打开串口";
+                button1.BackColor = Color.ForestGreen;
+                MessageBox.Show(ex.Message);
+                comboBox1.Enabled = true;
+                comboBox2.Enabled = true;
+                comboBox3.Enabled = true;
+                comboBox4.Enabled = true;
+                comboBox5.Enabled = true;
+            }
         }
 
 
@@ -378,7 +468,10 @@ namespace Seri
                 button1.ForeColor = Color.Black;
                 button1.Text = "打开串口";
                 button1.BackColor = Color.White;
-                MessageBox.Show(ex.Message);
+                if (ex.Message.Contains("PortName"))
+                    MessageBox.Show("没有串口，请连接串口！！");
+                else
+                    MessageBox.Show(ex.Message);
                 comboBox1.Enabled = true;
                 comboBox2.Enabled = true;
                 comboBox3.Enabled = true;
@@ -394,81 +487,7 @@ namespace Seri
         //串口发送
         private void button2_Click(object sender, EventArgs e)
         {
-            long num = 0;
-            string msg = "";
-            try
-            {
-                //首先判断串口是否开启
-                if (serialPort1.IsOpen)
-                {
-                    if (auto_sand == false)
-                    {
-                        //判断是否发送回车换行
-                        if (send_enter)
-                        {
-                            if (send_hex)
-                                msg = textBox_send.Text + " 0D 0A";
-                            else
-                                msg = textBox_send.Text + "\r\n";
-                        }
-                        else
-                            msg = textBox_send.Text;
-                        if (send_hex)
-                        {
-                            Byte[] hex = HexStringToBytes(msg);
-                            serialPort1.Write(hex, 0, hex.Length);
-                        }
-                        else
-                        {   //用于解决不能显示和发送中文
-                            /*System.Text.UTF8Encoding unic = new System.Text.UTF8Encoding();
-                            Byte[] writeBytes = unic.GetBytes(msg);*/
-
-                            Encoding gb = System.Text.Encoding.GetEncoding("gb2312");
-                            byte[] writeBytes = gb.GetBytes(msg);
-                            serialPort1.Write(writeBytes, 0, writeBytes.Length);
-                        }
-
-                        if (show_time ^ stop_show)
-                        {
-                            string time = DateTime.Now.TimeOfDay.ToString();
-                            time = time.Substring(0, 11);
-                            this.Invoke((EventHandler)(delegate
-                            {
-                                textBox_rec.AppendText("[");
-                                textBox_rec.AppendText(time);
-                                textBox_rec.AppendText("]");
-                                textBox_rec.AppendText("→发◇ " + msg);
-                                textBox_rec.AppendText("\r\n");
-                            }
-                               )
-                            );
-                        }
-
-                        // 计算发送的数据长度
-                        num = System.Text.Encoding.Default.GetBytes(textBox_send.Text).Length;
-                        send_num += num;
-                        label12.Text = send_num.ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                //捕获到异常，创建一个新的对象，之前的不可以再用
-                serialPort1 = new System.IO.Ports.SerialPort();
-                //刷新COM口选项
-                comboBox2.Items.Clear();
-                comboBox2.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
-                //响铃并显示异常给用户
-                System.Media.SystemSounds.Beep.Play();
-                button1.Text = "打开串口";
-                button1.BackColor = Color.ForestGreen;
-                MessageBox.Show(ex.Message);
-                comboBox1.Enabled = true;
-                comboBox2.Enabled = true;
-                comboBox3.Enabled = true;
-                comboBox4.Enabled = true;
-                comboBox5.Enabled = true;
-            }
+            sand_data(textBox_send.Text,send_hex);
         }
 
         private void 时间戳ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -630,11 +649,13 @@ namespace Seri
             if (stop_show)
             {
                 button5.Text = "恢复显示";
+                button5.ForeColor = Color.White;
                 button5.BackColor = Color.Red;
             }
             else
             {
                 button5.Text = "停止显示";
+                button5.ForeColor = Color.Black;
                 button5.BackColor = Color.WhiteSmoke;
             }
         }
@@ -751,6 +772,17 @@ namespace Seri
         }
 
         private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 多字符串ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 Fm2 = new Form2();
+            Fm2.Show();
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
 
         }
