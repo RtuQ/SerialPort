@@ -245,7 +245,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_send.BackColor = System.Drawing.Color.Black;
             this.textBox_send.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_send.ForeColor = System.Drawing.Color.White;
+            this.textBox_send.ForeColor = System.Drawing.Color.Lime;
             this.textBox_send.Location = new System.Drawing.Point(301, 484);
             this.textBox_send.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_send.Multiline = true;
@@ -260,7 +260,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(29, 52);
             this.label1.Name = "label1";
@@ -274,7 +274,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(29, 99);
             this.label2.Name = "label2";
@@ -287,7 +287,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(29, 142);
             this.label3.Name = "label3";
@@ -300,7 +300,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.Location = new System.Drawing.Point(29, 188);
             this.label4.Name = "label4";
@@ -313,7 +313,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Font = new System.Drawing.Font("黑体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.Location = new System.Drawing.Point(29, 236);
             this.label5.Name = "label5";
@@ -411,7 +411,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_rec.BackColor = System.Drawing.Color.Black;
             this.textBox_rec.Font = new System.Drawing.Font("宋体", 10F);
-            this.textBox_rec.ForeColor = System.Drawing.Color.White;
+            this.textBox_rec.ForeColor = System.Drawing.Color.Lime;
             this.textBox_rec.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.textBox_rec.Location = new System.Drawing.Point(301, 31);
             this.textBox_rec.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -449,7 +449,7 @@
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
             this.pictureBox2.Location = new System.Drawing.Point(11, 31);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
@@ -461,7 +461,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox3.BackColor = System.Drawing.Color.SandyBrown;
+            this.pictureBox3.BackColor = System.Drawing.Color.White;
             this.pictureBox3.Location = new System.Drawing.Point(11, 484);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
@@ -532,7 +532,7 @@
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.checkBox1.BackColor = System.Drawing.Color.White;
             this.checkBox1.Location = new System.Drawing.Point(11, 50);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox1.Name = "checkBox1";
@@ -546,7 +546,7 @@
             // 
             this.checkBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox2.AutoSize = true;
-            this.checkBox2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.checkBox2.BackColor = System.Drawing.Color.White;
             this.checkBox2.Location = new System.Drawing.Point(11, 84);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox2.Name = "checkBox2";
@@ -573,7 +573,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.SandyBrown;
+            this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(19, 508);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 15);
@@ -596,7 +596,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.SandyBrown;
+            this.label9.BackColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(227, 508);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 15);
@@ -607,7 +607,7 @@
             // 
             this.checkBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox3.AutoSize = true;
-            this.checkBox3.BackColor = System.Drawing.Color.SandyBrown;
+            this.checkBox3.BackColor = System.Drawing.Color.White;
             this.checkBox3.Location = new System.Drawing.Point(21, 541);
             this.checkBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox3.Name = "checkBox3";
@@ -621,7 +621,7 @@
             // 
             this.checkBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox4.AutoSize = true;
-            this.checkBox4.BackColor = System.Drawing.Color.SandyBrown;
+            this.checkBox4.BackColor = System.Drawing.Color.White;
             this.checkBox4.Location = new System.Drawing.Point(151, 542);
             this.checkBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox4.Name = "checkBox4";
@@ -659,7 +659,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.SandyBrown;
+            this.label10.BackColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(15, 677);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 15);
@@ -714,7 +714,7 @@
             // 
             this.checkBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox5.AutoSize = true;
-            this.checkBox5.BackColor = System.Drawing.Color.SandyBrown;
+            this.checkBox5.BackColor = System.Drawing.Color.White;
             this.checkBox5.Location = new System.Drawing.Point(21, 565);
             this.checkBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox5.Name = "checkBox5";
@@ -805,7 +805,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.button6);
