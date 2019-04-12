@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,20 @@ namespace Seri
             InitializeComponent();
 
             text1.Text = Settings1.Default.text1;
+            // 创建一个 the ToolTip .
+            ToolTip toolTip1 = new ToolTip
+            {
+
+                // 设置延时.
+                AutoPopDelay = 5000,
+                InitialDelay = 1000,
+                ReshowDelay = 500,
+                // 开启？
+                ShowAlways = true
+            };
+
+            // 设置需要显示的数据
+            toolTip1.SetToolTip(button33, "每一行对应一个字符串");
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -281,6 +296,138 @@ namespace Seri
         private void Form2_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void text7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button33_Click(object sender, EventArgs e)
+        {
+            string box = "text1";
+            OpenFileDialog OpenFileDialog1 = new OpenFileDialog();
+            OpenFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            OpenFileDialog1.ValidateNames = true;
+            OpenFileDialog1.CheckPathExists = true;
+            OpenFileDialog1.CheckFileExists = true;
+            if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string strFileName = OpenFileDialog1.FileName;
+                // Open the file to read from.
+                using (StreamReader sr = File.OpenText(strFileName))
+                {
+                    string s;
+                    int i = 0;
+                    while ((s = sr.ReadLine()) != null)
+                    {
+                        switch (i)
+                       {
+                            case 0:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text1.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 1:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text2.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 2:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text3.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 3:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text4.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 4:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text5.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 5:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text6.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 6:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text7.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 7:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text8.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 8:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text9.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 9:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text10.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 10:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text11.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+                            case 11:
+                                this.Invoke((EventHandler)(delegate
+                                {
+                                    text12.AppendText(s);
+                                }
+                                    )
+                                );
+                                break;
+
+
+                        }
+                        i++;
+                            
+                            
+                    }
+                }
+            }
         }
     }
 }

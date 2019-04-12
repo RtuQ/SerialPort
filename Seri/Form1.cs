@@ -698,6 +698,7 @@ namespace Seri
 
         private void 多字符串ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            checkBox5.CheckState = CheckState.Checked;
             Form2 Fm2 = new Form2();
             Fm2.Show();
         }

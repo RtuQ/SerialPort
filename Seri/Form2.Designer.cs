@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.check1 = new System.Windows.Forms.CheckBox();
             this.text1 = new System.Windows.Forms.TextBox();
@@ -69,6 +70,7 @@
             this.text17 = new System.Windows.Forms.TextBox();
             this.text18 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button32 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label35 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
@@ -190,7 +192,9 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button32 = new System.Windows.Forms.Button();
+            this.button33 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -217,7 +221,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 25);
             this.button1.TabIndex = 2;
-            this.button1.Text = "发送";
+            this.button1.Text = "AT";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -389,7 +393,7 @@
             this.text2.Name = "text2";
             this.text2.Size = new System.Drawing.Size(168, 25);
             this.text2.TabIndex = 28;
-            this.text2.Text = "AT+";
+            this.text2.Text = "AT+QLWSERV=\"180.101.147.115\",5683";
             // 
             // text3
             // 
@@ -397,7 +401,7 @@
             this.text3.Name = "text3";
             this.text3.Size = new System.Drawing.Size(168, 25);
             this.text3.TabIndex = 29;
-            this.text3.Text = "只有UI 无功能";
+            this.text3.Text = "AT+QLWCONF=\"\"";
             // 
             // text4
             // 
@@ -405,6 +409,7 @@
             this.text4.Name = "text4";
             this.text4.Size = new System.Drawing.Size(168, 25);
             this.text4.TabIndex = 30;
+            this.text4.Text = "AT+QLWADDOBJ=19,0,1,\"0\"";
             // 
             // text5
             // 
@@ -412,6 +417,7 @@
             this.text5.Name = "text5";
             this.text5.Size = new System.Drawing.Size(168, 25);
             this.text5.TabIndex = 31;
+            this.text5.Text = "AT+QLWADDOBJ=19,1,1,\"0\"";
             // 
             // text6
             // 
@@ -419,6 +425,7 @@
             this.text6.Name = "text6";
             this.text6.Size = new System.Drawing.Size(168, 25);
             this.text6.TabIndex = 32;
+            this.text6.Text = "AT+QLWOPEN=0";
             // 
             // text7
             // 
@@ -426,6 +433,8 @@
             this.text7.Name = "text7";
             this.text7.Size = new System.Drawing.Size(168, 25);
             this.text7.TabIndex = 33;
+            this.text7.Text = "AT+QLWCFG=\"dataformat\",1,1";
+            this.text7.TextChanged += new System.EventHandler(this.text7_TextChanged);
             // 
             // text8
             // 
@@ -433,6 +442,7 @@
             this.text8.Name = "text8";
             this.text8.Size = new System.Drawing.Size(168, 25);
             this.text8.TabIndex = 34;
+            this.text8.Text = "AT+QLWDATASEND=19,0,0";
             // 
             // text9
             // 
@@ -515,6 +525,7 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.AutoScrollMinSize = new System.Drawing.Size(0, 1000);
+            this.panel1.Controls.Add(this.button33);
             this.panel1.Controls.Add(this.button32);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label35);
@@ -679,9 +690,18 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(426, 358);
+            this.panel1.Size = new System.Drawing.Size(428, 527);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button32
+            // 
+            this.button32.Location = new System.Drawing.Point(163, 9);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(75, 23);
+            this.button32.TabIndex = 168;
+            this.button32.Text = "恢复默认";
+            this.button32.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
@@ -1685,7 +1705,7 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(99, 25);
             this.button8.TabIndex = 54;
-            this.button8.Text = "发送";
+            this.button8.Text = "数据发送";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
@@ -1695,7 +1715,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(99, 25);
             this.button7.TabIndex = 53;
-            this.button7.Text = "发送";
+            this.button7.Text = "发送格式";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -1705,7 +1725,7 @@
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(99, 25);
             this.button6.TabIndex = 52;
-            this.button6.Text = "发送";
+            this.button6.Text = "开启LwM2m";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -1715,7 +1735,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(99, 25);
             this.button5.TabIndex = 51;
-            this.button5.Text = "发送";
+            this.button5.Text = "发送OBJ";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -1725,7 +1745,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(99, 25);
             this.button4.TabIndex = 50;
-            this.button4.Text = "发送";
+            this.button4.Text = "接收OBJ";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -1735,7 +1755,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(99, 25);
             this.button3.TabIndex = 49;
-            this.button3.Text = "发送";
+            this.button3.Text = "验证码";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -1745,18 +1765,23 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(99, 25);
             this.button2.TabIndex = 48;
-            this.button2.Text = "发送";
+            this.button2.Text = "服务器";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button32
+            // button33
             // 
-            this.button32.Location = new System.Drawing.Point(163, 9);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(75, 23);
-            this.button32.TabIndex = 168;
-            this.button32.Text = "恢复默认";
-            this.button32.UseVisualStyleBackColor = true;
+            this.button33.Location = new System.Drawing.Point(285, 8);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(75, 23);
+            this.button33.TabIndex = 169;
+            this.button33.Text = "导入文件";
+            this.button33.UseVisualStyleBackColor = true;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form2
             // 
@@ -1764,7 +1789,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(426, 358);
+            this.ClientSize = new System.Drawing.Size(428, 527);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1941,5 +1966,8 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
