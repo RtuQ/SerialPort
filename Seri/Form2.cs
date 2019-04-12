@@ -13,6 +13,7 @@ namespace Seri
 {
     public partial class Form2 : Form
     {
+
         public Form2()
         {
             InitializeComponent();
@@ -32,6 +33,19 @@ namespace Seri
 
             // 设置需要显示的数据
             toolTip1.SetToolTip(button33, "每一行对应一个字符串");
+        }
+        public void clear()
+        {
+            TextBox[] stringtext = { text1, text2 ,text3, text4, text5, text6, text7, text8
+                                    , text9, text10, text11, text12, text13, text14, text15, text16
+                                    , text17, text18, text19, text20, text21, text22, text23, text24
+                                    , text25, text26, text27, text28, text29, text30, text31};
+            foreach (var item in stringtext)
+            {
+                item.Text = "";
+            }
+
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -305,15 +319,20 @@ namespace Seri
 
         private void button33_Click(object sender, EventArgs e)
         {
-            string box = "text1";
+            TextBox[] stringtext = { text1, text2 ,text3, text4, text5, text6, text7, text8
+                                    , text9, text10, text11, text12, text13, text14, text15, text16
+                                    , text17, text18, text19, text20, text21, text22, text23, text24
+                                    , text25, text26, text27, text28, text29, text30, text31};
             OpenFileDialog OpenFileDialog1 = new OpenFileDialog();
             OpenFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             OpenFileDialog1.ValidateNames = true;
             OpenFileDialog1.CheckPathExists = true;
             OpenFileDialog1.CheckFileExists = true;
+
             if (OpenFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string strFileName = OpenFileDialog1.FileName;
+
                 // Open the file to read from.
                 using (StreamReader sr = File.OpenText(strFileName))
                 {
@@ -321,112 +340,49 @@ namespace Seri
                     int i = 0;
                     while ((s = sr.ReadLine()) != null)
                     {
-                        switch (i)
-                       {
-                            case 0:
                                 this.Invoke((EventHandler)(delegate
                                 {
-                                    text1.AppendText(s);
+                                    stringtext[i].Text = s;
                                 }
                                     )
                                 );
-                                break;
-                            case 1:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text2.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-                            case 2:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text3.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-                            case 3:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text4.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-                            case 4:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text5.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-                            case 5:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text6.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-                            case 6:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text7.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-                            case 7:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text8.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-                            case 8:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text9.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-                            case 9:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text10.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-                            case 10:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text11.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-                            case 11:
-                                this.Invoke((EventHandler)(delegate
-                                {
-                                    text12.AppendText(s);
-                                }
-                                    )
-                                );
-                                break;
-
-
-                        }
                         i++;
                             
                             
                     }
                 }
+            }
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            clear();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            TextBox[] stringtext = { text1, text2 ,text3, text4, text5, text6, text7, text8
+                                    , text9, text10, text11, text12, text13, text14, text15, text16
+                                    , text17, text18, text19, text20, text21, text22, text23, text24
+                                    , text25, text26, text27, text28, text29, text30, text31};
+            TextBox[] timetext = { textBox1, textBox2 ,textBox3, textBox4, textBox5, textBox6, textBox7, textBox8
+                                    , textBox9, textBox10, textBox11, textBox12, textBox13, textBox14, textBox15, textBox16
+                                    , textBox17, textBox18, textBox19, textBox20, textBox21, textBox22, textBox23, textBox24
+                                    , textBox25, textBox26, textBox27, textBox28, textBox29, textBox30, textBox31};
+            if (checkBox1.CheckState == CheckState.Checked)
+            {
+                int i = 0;
+                foreach (var item in stringtext)
+                {
+                    if (item.Text != "")
+                    {
+                        From1.fm1.sand_data(item.Text, false);
+                        System.Threading.Thread.Sleep(Convert.ToInt16(timetext[i].Text));
+                    }
+                    else
+                        break;
+                }
+               
             }
         }
     }

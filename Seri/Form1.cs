@@ -311,7 +311,7 @@ namespace Seri
 
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("作者：QLH\r本串口助手界面参照野火串口助手\r日期：2019年3月28日");
+            MessageBox.Show("作者：RtuQ\r本串口助手界面参照野火串口助手\r日期：2019年3月28日");
         }
 
 
@@ -483,7 +483,7 @@ namespace Seri
         //串口发送
         private void button2_Click(object sender, EventArgs e)
         {
-            if(auto_send)
+            if(auto_send == false)
                 sand_data(textBox_send.Text,send_hex);
         }
 
