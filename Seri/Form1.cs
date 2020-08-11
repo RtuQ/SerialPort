@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,11 +23,19 @@ namespace Seri
         bool send_enter = false;
         bool auto_send = false;
         bool auto_clear = false;
+        public static bool draw_chart = false;
         //bool error = false;
         long rec_num = 0;
         long send_num = 0;
 
         public static From1 fm1 = null;
+        public static Queue<double> Data = new Queue<double>(200);
+        public static Queue<Int32> Data_time = new Queue<Int32>(200);
+        private int num = 5;//超过100个点则舍去前5个点
+
+        //double Last_time = DateTime.Now.TimeOfDay.TotalSeconds;
+        Int32 time_add = 0;
+
         public From1()
         {
             InitializeComponent();
@@ -35,7 +44,7 @@ namespace Seri
             comboBox4.SelectedIndex = 3;
             comboBox5.SelectedIndex = 0;
             System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;
-
+            
 
  /*          System.Timers.Timer tim = new System.Timers.Timer(100);
             tim.Elapsed += new System.Timers.ElapsedEventHandler(theout);
@@ -278,35 +287,13 @@ namespace Seri
         //串口扫描
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int i = 0;
-            RegistryKey keyCom = Registry.LocalMachine.OpenSubKey("Hardware\\DeviceMap\\SerialComm");
-            if (keyCom != null)
-            {
-                string[] sSubKeys = keyCom.GetValueNames();
-                last_port = comboBox2.Text;
-                comboBox2.Items.Clear();
-                foreach (string sName in sSubKeys)
-                {
-                    string sValue = (string)keyCom.GetValue(sName);
-                    comboBox2.Items.Add(sValue);
-                    if (last_port == sValue)
-                        comboBox2.SelectedIndex = i;
-                    else
-                        comboBox2.SelectedIndex = 0;
-                    i++;
-                }
-            }
+
         }
 
 
         private void label1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void 关于ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -348,6 +335,7 @@ namespace Seri
             {
                 string time = DateTime.Now.TimeOfDay.ToString();
                 time = time.Substring(0, 11);
+
                 //等待数据进入缓冲区 不加延时可能发生数据分段现象
                 System.Threading.Thread.Sleep(50);
 
@@ -368,6 +356,32 @@ namespace Seri
                 int len = serialPort1.BytesToRead;
                 byte[] bytes = new byte[len];
                 serialPort1.Read(bytes, 0, len);
+                if (len > 3)
+                {
+                    if (bytes[0] == 0xEE && bytes[1] == 0xBB && draw_chart == true)
+                    {
+                        //TimeSpan New_time = new TimeSpan(DateTime.Now.Ticks);
+                        ////double New_time = DateTime.Now.TimeOfDay.TotalSeconds;
+                        //TimeSpan add_time = New_time.Subtract(Last_time).Duration();
+                        //double Add_time = add_time.TotalSeconds;
+                        ////double Add_time = New_time - Last_time;
+                        ///Last_time = New_time;
+                        double Volte = bytes[2] + (bytes[3] * 0.1);
+                        time_add = time_add + 10;
+                        Data.Enqueue(Volte);
+                        Data_time.Enqueue(time_add);
+                    }
+                    if (Data.Count > 100)
+                    {
+                        for (int i = 0; i < num; i++)
+                        {
+                            Data.Dequeue();
+                            Data_time.Dequeue();
+                        }
+                    }
+                    
+                }
+
                 if (show_hex)
                     buffer = byteToHexStr(bytes);
                 else
@@ -706,6 +720,39 @@ namespace Seri
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox_rec_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 绘制图形ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 Fm3 = new Form3();
+            Fm3.Show();
+        }
+
+        private void comboBox2_DropDown(object sender, EventArgs e)
+        {
+            int i = 0;
+            RegistryKey keyCom = Registry.LocalMachine.OpenSubKey("Hardware\\DeviceMap\\SerialComm");
+            if (keyCom != null)
+            {
+                string[] sSubKeys = keyCom.GetValueNames();
+                last_port = comboBox2.Text;
+                comboBox2.Items.Clear();
+                foreach (string sName in sSubKeys)
+                {
+                    string sValue = (string)keyCom.GetValue(sName);
+                    comboBox2.Items.Add(sValue);
+                    if (last_port == sValue)
+                        comboBox2.SelectedIndex = i;
+                    else
+                        comboBox2.SelectedIndex = 0;
+                    i++;
+                }
+            }
         }
     }
 }
