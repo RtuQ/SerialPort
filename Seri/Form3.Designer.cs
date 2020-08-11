@@ -58,6 +58,11 @@ namespace Seri
             this.chart1.Size = new System.Drawing.Size(674, 388);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
+            this.chart1.Series[0].Color = Color.Red;
+            this.chart1.Series[0].BorderWidth = 3;
+            this.chart1.Series[0].MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            this.chart1.Series[0].MarkerColor = Color.Black;
+            //this.chart1.ChartAreas[0].AxisX.Interval = 3;
             // 
             // timer1
             // 

@@ -38,6 +38,7 @@ namespace Seri
             From1.draw_chart = false;
             From1.Data.Clear();
             From1.Data_time.Clear();
+            From1.time_add = 0;
 
             timer1.Stop();
         }

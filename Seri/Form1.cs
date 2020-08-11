@@ -34,7 +34,7 @@ namespace Seri
         private int num = 5;//超过100个点则舍去前5个点
 
         //double Last_time = DateTime.Now.TimeOfDay.TotalSeconds;
-        Int32 time_add = 0;
+        public static Int32 time_add = 0;
 
         public From1()
         {

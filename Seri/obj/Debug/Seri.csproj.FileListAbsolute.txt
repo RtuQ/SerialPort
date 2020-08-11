@@ -90,3 +90,15 @@ G:\QLH\_Program\SerialPort(1)\Seri\obj\Debug\Seri.csproj.GenerateResource.cache
 G:\QLH\_Program\SerialPort(1)\Seri\obj\Debug\Seri.csproj.CoreCompileInputs.cache
 G:\QLH\_Program\SerialPort(1)\Seri\obj\Debug\Seri.exe
 G:\QLH\_Program\SerialPort(1)\Seri\obj\Debug\Seri.pdb
+G:\QLH\_Program\SerialPort\Seri\bin\Debug\Seri.exe.config
+G:\QLH\_Program\SerialPort\Seri\bin\Debug\Seri.exe
+G:\QLH\_Program\SerialPort\Seri\bin\Debug\Seri.pdb
+G:\QLH\_Program\SerialPort\Seri\obj\Debug\Seri.csprojAssemblyReference.cache
+G:\QLH\_Program\SerialPort\Seri\obj\Debug\Seri.From1.resources
+G:\QLH\_Program\SerialPort\Seri\obj\Debug\Seri.Form2.resources
+G:\QLH\_Program\SerialPort\Seri\obj\Debug\Seri.Form3.resources
+G:\QLH\_Program\SerialPort\Seri\obj\Debug\Seri.Properties.Resources.resources
+G:\QLH\_Program\SerialPort\Seri\obj\Debug\Seri.csproj.GenerateResource.cache
+G:\QLH\_Program\SerialPort\Seri\obj\Debug\Seri.csproj.CoreCompileInputs.cache
+G:\QLH\_Program\SerialPort\Seri\obj\Debug\Seri.exe
+G:\QLH\_Program\SerialPort\Seri\obj\Debug\Seri.pdb
