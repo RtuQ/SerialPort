@@ -30,8 +30,11 @@ namespace Seri
 
         public static From1 fm1 = null;
         public static Queue<double> Data = new Queue<double>(200);
+        public static Queue<double> Data_Current = new Queue<double>(200);
+        public static Queue<Int16> Data_Postion = new Queue<Int16>(200);
+        public static Queue<double> Data_Speed = new Queue<double>(200);
         public static Queue<Int32> Data_time = new Queue<Int32>(200);
-        private int num = 5;//超过100个点则舍去前5个点
+        private int num_limit = 5;//超过100个点则舍去前5个点
 
         //double Last_time = DateTime.Now.TimeOfDay.TotalSeconds;
         public static Int32 time_add = 0;
@@ -356,7 +359,7 @@ namespace Seri
                 int len = serialPort1.BytesToRead;
                 byte[] bytes = new byte[len];
                 serialPort1.Read(bytes, 0, len);
-                if (len > 3)
+                if (len > 6)
                 {
                     if (bytes[0] == 0xEE && bytes[1] == 0xBB && draw_chart == true)
                     {
@@ -367,15 +370,33 @@ namespace Seri
                         ////double Add_time = New_time - Last_time;
                         ///Last_time = New_time;
                         double Volte = bytes[2] + (bytes[3] * 0.1);
-                        time_add = time_add + 10;
+
+                        Int16 Postion = bytes[4];
+                        Postion = (Int16)(Postion << 8);
+                        Postion += bytes[5];
+
+                        double Speed = (bytes[6] + (bytes[7] * 0.1))/(4.0);
+
+                        Int16 Current = bytes[10];
+                        Current = (Int16)(Current << 8);
+                        Current += bytes[9];
+                        double Current_data = Current * 0.01;
+
+                        time_add = time_add + 5;
                         Data.Enqueue(Volte);
+                        Data_Current.Enqueue(Current_data);
+                        Data_Postion.Enqueue(Postion);
+                        Data_Speed.Enqueue(Speed);
                         Data_time.Enqueue(time_add);
                     }
                     if (Data.Count > 100)
                     {
-                        for (int i = 0; i < num; i++)
+                        for (int i = 0; i < num_limit; i++)
                         {
                             Data.Dequeue();
+                            Data_Current.Dequeue();
+                            Data_Postion.Dequeue();
+                            Data_Speed.Dequeue();
                             Data_time.Dequeue();
                         }
                     }
