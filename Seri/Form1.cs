@@ -34,6 +34,8 @@ namespace Seri
         public static Queue<Int16> Data_Postion = new Queue<Int16>(200);
         public static Queue<double> Data_Speed = new Queue<double>(200);
         public static Queue<Int32> Data_time = new Queue<Int32>(200);
+        public static Queue<string> Data_True_time = new Queue<string>(200);
+        public static Queue<double> Data_Torque = new Queue<double>(200);
         private int num_limit = 5;//超过100个点则舍去前5个点
 
         //double Last_time = DateTime.Now.TimeOfDay.TotalSeconds;
@@ -388,8 +390,11 @@ namespace Seri
                         Data_Postion.Enqueue(Postion);
                         Data_Speed.Enqueue(Speed);
                         Data_time.Enqueue(time_add);
+                        Data_True_time.Enqueue(time);
+
+                     
                     }
-                    if (Data.Count > 100)
+                    if (Data.Count > 150)
                     {
                         for (int i = 0; i < num_limit; i++)
                         {
@@ -398,6 +403,7 @@ namespace Seri
                             Data_Postion.Dequeue();
                             Data_Speed.Dequeue();
                             Data_time.Dequeue();
+                            Data_True_time.Dequeue();
                         }
                     }
                     
