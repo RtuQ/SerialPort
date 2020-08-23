@@ -42,9 +42,9 @@
             this.功能ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.施工中ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.多字符串ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.绘制图形ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.绘制图形ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_send = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -215,7 +215,7 @@
             // 施工中ToolStripMenuItem
             // 
             this.施工中ToolStripMenuItem.Name = "施工中ToolStripMenuItem";
-            this.施工中ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.施工中ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.施工中ToolStripMenuItem.Text = "施工中";
             // 
             // 多字符串ToolStripMenuItem
@@ -224,6 +224,13 @@
             this.多字符串ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.多字符串ToolStripMenuItem.Text = "多字符串";
             this.多字符串ToolStripMenuItem.Click += new System.EventHandler(this.多字符串ToolStripMenuItem_Click);
+            // 
+            // 绘制图形ToolStripMenuItem
+            // 
+            this.绘制图形ToolStripMenuItem.Name = "绘制图形ToolStripMenuItem";
+            this.绘制图形ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.绘制图形ToolStripMenuItem.Text = "绘制图形";
+            this.绘制图形ToolStripMenuItem.Click += new System.EventHandler(this.绘制图形ToolStripMenuItem_Click);
             // 
             // 帮助ToolStripMenuItem
             // 
@@ -236,16 +243,9 @@
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             this.关于ToolStripMenuItem.Click += new System.EventHandler(this.关于ToolStripMenuItem_Click);
-            // 
-            // 绘制图形ToolStripMenuItem
-            // 
-            this.绘制图形ToolStripMenuItem.Name = "绘制图形ToolStripMenuItem";
-            this.绘制图形ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.绘制图形ToolStripMenuItem.Text = "绘制图形";
-            this.绘制图形ToolStripMenuItem.Click += new System.EventHandler(this.绘制图形ToolStripMenuItem_Click);
             // 
             // textBox_send
             // 

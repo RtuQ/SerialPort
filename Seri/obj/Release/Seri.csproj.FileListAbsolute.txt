@@ -1,0 +1,12 @@
+D:\_File\Program\SerialPort\Seri\bin\Release\Seri.exe.config
+D:\_File\Program\SerialPort\Seri\bin\Release\Seri.exe
+D:\_File\Program\SerialPort\Seri\bin\Release\Seri.pdb
+D:\_File\Program\SerialPort\Seri\obj\Release\Seri.csprojAssemblyReference.cache
+D:\_File\Program\SerialPort\Seri\obj\Release\Seri.From1.resources
+D:\_File\Program\SerialPort\Seri\obj\Release\Seri.Form2.resources
+D:\_File\Program\SerialPort\Seri\obj\Release\Seri.Form3.resources
+D:\_File\Program\SerialPort\Seri\obj\Release\Seri.Properties.Resources.resources
+D:\_File\Program\SerialPort\Seri\obj\Release\Seri.csproj.GenerateResource.cache
+D:\_File\Program\SerialPort\Seri\obj\Release\Seri.csproj.CoreCompileInputs.cache
+D:\_File\Program\SerialPort\Seri\obj\Release\Seri.exe
+D:\_File\Program\SerialPort\Seri\obj\Release\Seri.pdb

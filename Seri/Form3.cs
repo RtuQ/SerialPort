@@ -23,21 +23,30 @@ namespace Seri
             this.chart1.Series[0].Color = Color.Red;
             this.chart1.Series[0].BorderWidth = 3;
             this.chart1.Series[0].LegendText = "电压";
-            this.chart1.Series[0].MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            this.chart1.Series[0].MarkerColor = Color.Black;
+            //this.chart1.Series[0].MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            //this.chart1.Series[0].MarkerColor = Color.Black;
+            //this.chart1.ChartAreas[0].AxisX.ScaleView.Size = 5;
+            //this.chart1.ChartAreas[0].AxisX.ScaleView.Position = Series.Points.Count;
+            //this.chart1.ChartAreas[0].AxisX.ScaleView.Size = 4 ;
 
 
             this.chart2.Series[0].Color = Color.Red;
             this.chart2.Series[0].BorderWidth = 3;
             this.chart2.Series[0].LegendText = "电流";
-            this.chart2.Series[0].MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            this.chart2.Series[0].MarkerColor = Color.Black;
+            //this.chart2.Series[0].MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            //this.chart2.Series[0].MarkerColor = Color.Black;
 
             this.chart3.Series[0].Color = Color.Red;
             this.chart3.Series[0].BorderWidth = 3;
             this.chart3.Series[0].LegendText = "速度";
-            this.chart3.Series[0].MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            this.chart3.Series[0].MarkerColor = Color.Black;
+            //this.chart3.Series[0].MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            //this.chart3.Series[0].MarkerColor = Color.Black;
+
+            this.chart4.Series[0].Color = Color.Red;
+            this.chart4.Series[0].BorderWidth = 3;
+            this.chart4.Series[0].LegendText = "扭矩";
+            //this.chart4.Series[0].MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            //this.chart4.Series[0].MarkerColor = Color.Black;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -60,10 +69,17 @@ namespace Seri
                 this.chart3.Series[0].Points.AddXY(From1.Data_time.ElementAt(i), From1.Data_Speed.ElementAt(i));
             }
 
+            this.chart4.Series[0].Points.Clear();
+            for (int i = 0; i < From1.Data_Torque.Count; i++)
+            {
+                this.chart4.Series[0].Points.AddXY(From1.Data_time.ElementAt(i), From1.Data_Torque.ElementAt(i));
+            }
+
             this.textBox1.Text = Convert.ToString(From1.Data.LastOrDefault());
             this.textBox2.Text = Convert.ToString(From1.Data_Current.LastOrDefault());
             this.textBox3.Text = Convert.ToString(From1.Data_Postion.LastOrDefault());
             this.textBox4.Text = Convert.ToString(From1.Data_Speed.LastOrDefault());
+            this.textBox5.Text = Convert.ToString(From1.Data_Torque.LastOrDefault());
 
             if (From1.Data_time.LastOrDefault() != last_time)
             {
@@ -89,6 +105,8 @@ namespace Seri
             From1.Data_Postion.Clear();
             From1.Data_Speed.Clear();
             From1.Data_True_time.Clear();
+            From1.Data_Torque.Clear();
+            //this.dataGridView1.Rows.Clear();
 
             timer1.Stop();
         }
@@ -112,7 +130,9 @@ namespace Seri
             From1.Data_Postion.Clear();
             From1.Data_Speed.Clear();
             From1.Data_True_time.Clear();
+            From1.Data_Torque.Clear();
             From1.time_add = 0;
+            this.dataGridView1.Rows.Clear();
 
             timer1.Stop();
         }
@@ -207,9 +227,16 @@ namespace Seri
                 string filename = str[0] + '(' + count.ToString() + ')' + '.' + str[1];
                 count = count + 1;
                 this.chart2.SaveImage(filename, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
-                string[] str1 = saveFileDialog2.FileName.Split('.');
+
+                //string[] str1 = saveFileDialog2.FileName.Split('.');
                 string filename1 = str[0] + '(' + count.ToString() + ')' + '.' + str[1];
+                count = count + 1;
                 this.chart3.SaveImage(filename1, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
+
+
+                //string[] str2 = saveFileDialog2.FileName.Split('.');
+                string filename2 = str[0] + '(' + count.ToString() + ')' + '.' + str[1];
+                this.chart4.SaveImage(filename2, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png);
 
                 MessageBox.Show("数据被导出到：" + saveFileDialog2.FileName.ToString(), "导出完毕", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -221,6 +248,11 @@ namespace Seri
         private void button4_Click(object sender, EventArgs e)
         {
             Save_Image();
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

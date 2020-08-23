@@ -361,39 +361,51 @@ namespace Seri
                 int len = serialPort1.BytesToRead;
                 byte[] bytes = new byte[len];
                 serialPort1.Read(bytes, 0, len);
-                if (len > 6)
+                if (bytes[0] == 0xEE && bytes[1] == 0xBB && draw_chart == true)
                 {
-                    if (bytes[0] == 0xEE && bytes[1] == 0xBB && draw_chart == true)
+                    //TimeSpan New_time = new TimeSpan(DateTime.Now.Ticks);
+                    ////double New_time = DateTime.Now.TimeOfDay.TotalSeconds;
+                    //TimeSpan add_time = New_time.Subtract(Last_time).Duration();
+                    //double Add_time = add_time.TotalSeconds;
+                    ////double Add_time = New_time - Last_time;
+                    ///Last_time = New_time;
+
+                    if (len > 12)
                     {
-                        //TimeSpan New_time = new TimeSpan(DateTime.Now.Ticks);
-                        ////double New_time = DateTime.Now.TimeOfDay.TotalSeconds;
-                        //TimeSpan add_time = New_time.Subtract(Last_time).Duration();
-                        //double Add_time = add_time.TotalSeconds;
-                        ////double Add_time = New_time - Last_time;
-                        ///Last_time = New_time;
                         double Volte = bytes[2] + (bytes[3] * 0.1);
 
                         Int16 Postion = bytes[4];
                         Postion = (Int16)(Postion << 8);
                         Postion += bytes[5];
 
-                        double Speed = (bytes[6] + (bytes[7] * 0.1))/(4.0);
+                        double Speed = (bytes[6] + (bytes[7] * 0.1)) / (4.0);
 
                         Int16 Current = bytes[10];
                         Current = (Int16)(Current << 8);
                         Current += bytes[9];
                         double Current_data = Current * 0.01;
 
-                        time_add = time_add + 5;
+                        Int16 Torque = bytes[11];
+                        Torque = (Int16)(Torque << 8);
+                        Torque += bytes[12];
+                        double Torque_data = Torque * 0.001;
+
+                        time_add = time_add + 20;
                         Data.Enqueue(Volte);
                         Data_Current.Enqueue(Current_data);
                         Data_Postion.Enqueue(Postion);
                         Data_Speed.Enqueue(Speed);
                         Data_time.Enqueue(time_add);
+                        Data_Torque.Enqueue(Torque_data);
                         Data_True_time.Enqueue(time);
 
-                     
                     }
+                    else
+                    {
+                        MessageBox.Show("请检查数据长度", "错误", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        draw_chart = false;
+                    }
+
                     if (Data.Count > 150)
                     {
                         for (int i = 0; i < num_limit; i++)
@@ -404,10 +416,15 @@ namespace Seri
                             Data_Speed.Dequeue();
                             Data_time.Dequeue();
                             Data_True_time.Dequeue();
+                            Data_Torque.Dequeue();
                         }
                     }
-                    
+
+
                 }
+
+                    
+          
 
                 if (show_hex)
                     buffer = byteToHexStr(bytes);
